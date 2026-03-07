@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.saremba.de)",
+      "Bash(cargo clippy:*)",
+      "WebFetch(domain:crates.io)"
+    ]
+  }
+}
