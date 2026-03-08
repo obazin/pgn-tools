@@ -30,7 +30,7 @@ pgn-tools <INPUT> [OUTPUT] [OPTIONS]
 | Argument | Required | Description |
 |----------|----------|-------------|
 | `INPUT`  | Yes      | Path to the input PGN file |
-| `OUTPUT` | No       | Path to the sorted output file (defaults to `INPUT`, sorting in place) |
+| `OUTPUT` | No       | Path to the output file (defaults to `<input>-sorted.pgn`, or `<input>-filtered.pgn` when `--filter` is used) |
 
 ### Options
 
@@ -43,32 +43,26 @@ pgn-tools <INPUT> [OUTPUT] [OPTIONS]
 | `--completions <SHELL>` | Generate shell completions and exit (`bash`, `zsh`, `fish`, `elvish`, `powershell`) |
 | `-h, --help` | Print help with filter expression syntax |
 
-When no output file is given and no `--filter` is set, the input file is sorted in place.
+The input file is never modified. When no output file is given, the result is written to `<input>-sorted.pgn` (or `<input>-filtered.pgn` when `--filter` is used).
 
 ## Examples
 
-### Sort in place (overwrites input file)
+### Sort (writes to `games-sorted.pgn`)
 
 ```
 pgn-tools games.pgn
 ```
 
-### Sort to a separate file
+### Sort to a specific file
 
 ```
 pgn-tools games.pgn sorted.pgn
 ```
 
-### Sort newest first (in place)
+### Sort newest first
 
 ```
 pgn-tools games.pgn --desc
-```
-
-### Sort newest first to a separate file
-
-```
-pgn-tools games.pgn sorted.pgn --desc
 ```
 
 ### Filter games from a specific year
@@ -113,18 +107,18 @@ pgn-tools games.pgn --filter "<= 1999-12-31"
 pgn-tools games.pgn --filter 2014 --filter-file year2014.pgn
 ```
 
-### Sort and filter in one command
+### Filter and sort in one command
 
 ```
-pgn-tools games.pgn sorted.pgn --desc --filter ">= 2020"
+pgn-tools games.pgn --desc --filter ">= 2020"
 ```
 
-This writes all games sorted newest-first to `sorted.pgn`, and games from 2020 onwards to `games-filtered.pgn`.
+This writes matching games sorted newest-first to `games-filtered.pgn`.
 
-### Sort and filter with custom paths
+### Custom output path
 
 ```
-pgn-tools games.pgn sorted.pgn --desc --filter ">= 2020" --filter-file recent.pgn
+pgn-tools games.pgn recent.pgn --desc --filter ">= 2020"
 ```
 
 ## Filter expressions
@@ -152,11 +146,10 @@ PGN files often contain dates with unknown components, such as `1997.??.??` or `
 ```
 $ pgn-tools jones.pgn --desc --filter ">= 2020"
 Parsed 1484 games from 'jones.pgn'
-Sorted DESC (newest first)
-Date range: 2021.07.04 .. 1997.??.??
-Written to 'jones.pgn'
 Filtered 62 / 1484 games matching '>= 2020'
-Filtered output written to 'jones-filtered.pgn'
+Sorted DESC (newest first)
+Date range: 2021.07.04 .. 2020.01.18
+Written to 'jones-filtered.pgn'
 ```
 
 ## Shell completions

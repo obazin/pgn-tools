@@ -58,13 +58,12 @@ fn validate_args(cli: &Cli) {
     }
 }
 
-/// Derive a default filter output path from the input path.
-/// Inserts "-filtered" before the ".pgn" extension, or appends it.
-fn default_filter_path(input: &str) -> String {
+/// Build a default output path by inserting `suffix` before ".pgn" (or appending it).
+fn default_output_path(input: &str, suffix: &str) -> String {
     if let Some(stem) = input.strip_suffix(".pgn") {
-        format!("{stem}-filtered.pgn")
+        format!("{stem}-{suffix}.pgn")
     } else {
-        format!("{input}-filtered")
+        format!("{input}-{suffix}")
     }
 }
 
@@ -75,9 +74,9 @@ fn output_path(cli: &Cli, input: &str) -> String {
     } else if cli.filter.is_some() {
         cli.filter_file
             .clone()
-            .unwrap_or_else(|| default_filter_path(input))
+            .unwrap_or_else(|| default_output_path(input, "filtered"))
     } else {
-        input.to_owned()
+        default_output_path(input, "sorted")
     }
 }
 
