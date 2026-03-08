@@ -30,7 +30,7 @@ struct Cli {
     #[arg(long, value_name = "SHELL")]
     completions: Option<clap_complete::Shell>,
 
-    /// Output PGN file (sorted); defaults to input file when no filter is set
+    /// Output PGN file (defaults to <input>-sorted.pgn, or <input>-filtered.pgn when --filter is used)
     output: Option<String>,
 
     /// Sort newest first
@@ -44,10 +44,6 @@ struct Cli {
     /// Filter games by date expression
     #[arg(long)]
     filter: Option<String>,
-
-    /// Output path for filtered games
-    #[arg(long)]
-    filter_file: Option<String>,
 }
 
 /// Validate CLI argument constraints that clap cannot express.
@@ -72,9 +68,7 @@ fn output_path(cli: &Cli, input: &str) -> String {
     if let Some(ref path) = cli.output {
         path.clone()
     } else if cli.filter.is_some() {
-        cli.filter_file
-            .clone()
-            .unwrap_or_else(|| default_output_path(input, "filtered"))
+        default_output_path(input, "filtered")
     } else {
         default_output_path(input, "sorted")
     }

@@ -39,7 +39,6 @@ pgn-tools <INPUT> [OUTPUT] [OPTIONS]
 | `--asc` | Sort oldest first (default) |
 | `--desc` | Sort newest first |
 | `--filter <EXPR>` | Filter games by date expression |
-| `--filter-file <PATH>` | Custom output path for filtered games (default: `<input>-filtered.pgn`) |
 | `--completions <SHELL>` | Generate shell completions and exit (`bash`, `zsh`, `fish`, `elvish`, `powershell`) |
 | `-h, --help` | Print help with filter expression syntax |
 
@@ -101,10 +100,10 @@ pgn-tools games.pgn --filter "> 2020"
 pgn-tools games.pgn --filter "<= 1999-12-31"
 ```
 
-### Custom filter output path
+### Filter to a specific file
 
 ```
-pgn-tools games.pgn --filter 2014 --filter-file year2014.pgn
+pgn-tools games.pgn year2014.pgn --filter 2014
 ```
 
 ### Filter and sort in one command
