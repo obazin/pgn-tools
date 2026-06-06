@@ -82,18 +82,17 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1780735929,
-        "narHash": "sha256-U1Z2NTZ10veaZz8cg0ElzpSm7F9BtmenaJMBdcY7+9k=",
-        "ref": "main",
-        "rev": "065de0439b1048d2374ccb366b677dc75eb2208a",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/obazin/chess-flake.git"
+        "lastModified": 1780737878,
+        "narHash": "sha256-zMAPz/EElL8JEanXfFi3Qp2CN+6lX+6Fua6p8tKuZHY=",
+        "owner": "obazin",
+        "repo": "chess-flake",
+        "rev": "c8fcc78681d9b744c0f4c651ee9e66f8c5778582",
+        "type": "github"
       },
       "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/obazin/chess-flake.git"
+        "owner": "obazin",
+        "repo": "chess-flake",
+        "type": "github"
       }
     }
   },

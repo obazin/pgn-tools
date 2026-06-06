@@ -1,7 +1,7 @@
 {
   description = "pgn-tools — devShell composed from chess-flake bundles";
 
-  inputs.workspace.url = "git+ssh://git@github.com/obazin/chess-flake.git?ref=main";
+  inputs.workspace.url = "github:obazin/chess-flake";
 
   outputs =
     { self, workspace }:
