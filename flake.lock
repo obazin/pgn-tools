@@ -82,11 +82,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1780738751,
-        "narHash": "sha256-FdukjLe7CPm59sgBZWysjqjMYSnM8grUCaPHFrAtj9s=",
+        "lastModified": 1780767680,
+        "narHash": "sha256-rRxxPU3QnausOMmgRtC4q+Y3i+5Eqy3h3BKF8JoWMIc=",
         "owner": "obazin",
         "repo": "chess-flake",
-        "rev": "c5c944b14abba810189f33311f4878c4b37aaa2c",
+        "rev": "9d00993a769b2716b8a9f6d80a8c5a0151b7105e",
         "type": "github"
       },
       "original": {
